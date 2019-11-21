@@ -1,4 +1,9 @@
-package Proyect2LFP.Analizador;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Proyect2LFP.AnalizadorLexico;
 
 import Proyect2LFP.AnalizadorSintactico.AnalizadorSintactico;
 import java.io.File;
@@ -13,8 +18,8 @@ import javax.swing.JOptionPane;
  * @author jara
  */
 public class CargarArchivo {
-    Analizador anal;
-    AnalizadorSintactico analS;
+    AnalizadorLexico anal;
+    AnalizadorSintactico anal2;
     JFileChooser select = new JFileChooser();
     File files;
     FileInputStream in;
@@ -43,15 +48,15 @@ public class CargarArchivo {
             if (files.canRead()) {
                 if (files.getName().endsWith("txt")) {
                     docCargado = cargar(files);
-                    anal = new Analizador();
+                    anal = new AnalizadorLexico();
                     anal.separadorLineas(docCargado);
-                    analS = new AnalizadorSintactico();
-                    analS.analizis(docCargado);
+                    
+                    anal2 = new AnalizadorSintactico();
+                    anal2.analizis(docCargado);
                 } else {
                     JOptionPane.showMessageDialog(null, "Archivo No Compatible");
                 }
             }
         }
     }
-    
 }
